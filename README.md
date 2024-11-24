@@ -4,6 +4,12 @@ A high-performance, full-stack monorepo starter template powered by [Turborepo](
 
 ## ✨ Features
 
+
+
+## Important Note
+
+To run the backend server without using `ts-node` or `nodemon`, you need to install `bun` and run the server with `bun run start` in the `apps/api` directory.
+
 ### 📦 Apps and Packages
 - `apps/web`: Next.js 14+ application with App Router
   - Tailwind CSS v4
@@ -11,7 +17,7 @@ A high-performance, full-stack monorepo starter template powered by [Turborepo](
   - Modern styling and components out of the box
 - `apps/api`: Express.js v5 REST API
 - `packages/typescript-config`: Shared TypeScript configurations
-- `packages/ui`: Shared UI component library (optional)
+- `packages/biome-config`: Shared Biome configurations
 
 ### 🛠 Development Tools
 - **Biome.js**: Fast and reliable linter and formatter
@@ -31,7 +37,7 @@ A high-performance, full-stack monorepo starter template powered by [Turborepo](
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/turbo-starter-kit.git
+git clone https://github.com/shabirkhan-dev/turbo-starter-kit.git
 
 # Install dependencies
 pnpm install
@@ -71,11 +77,10 @@ pnpm build --filter=api
 ├── packages
 │   ├── typescript-config   # Shared TypeScript configurations
 │   │   └── ...
-│   └── ui                  # Shared UI components (optional)
+│   └── biome-config        # Shared Biome configurations
 │       └── ...
 ├── .github                 # GitHub workflows
 ├── .vscode                 # VS Code settings
-├── biome.json             # Biome configuration
 ├── lefthook.yml           # Lefthook configuration
 ├── package.json
 ├── pnpm-workspace.yaml
@@ -86,7 +91,7 @@ pnpm build --filter=api
 
 ### Biome
 
-The project uses Biome for linting and formatting. Configuration can be found in `biome.json`:
+The project uses Biome for linting and formatting. Configuration can be found in `packages/biome-config`:
 
 ```json
 {
@@ -138,7 +143,7 @@ pre-commit:
 
 ## 📝 License
 
-MIT © [Your Name]
+MIT © [Shabir Khan](https://github.com/shabirkhan-dev)
 
 ---
 
