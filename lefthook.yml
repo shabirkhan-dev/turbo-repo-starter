@@ -1,0 +1,21 @@
+pre-commit:
+  commands:
+    format:
+      glob: "apps/web/src/**/*.{js,ts,jsx,tsx}"
+      run: npx biome format --write {staged_files}
+      skip:
+        - "apps/web/src/**/*.{css,json,md,html,svg}"
+        - "apps/web/src/main.tsx"
+
+    lint:
+      glob: "apps/web/src/**/*.{js,ts,jsx,tsx}"
+      run: npx biome check --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      skip:
+        - "apps/web/src/**/*.{css,json,md,html,svg}"
+        - "apps/web/src/main.tsx"
+
+    prevent-bad-commit:
+      run: test -n "$(git diff --cached --name-only)"
+      skip:
+        - merge
+        - rebase
