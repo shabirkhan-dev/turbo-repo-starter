@@ -1,81 +1,149 @@
-# Turborepo starter
+# 🚀 Turborepo Full-Stack Starter Kit
 
-This is an official starter Turborepo.
+A high-performance, full-stack monorepo starter template powered by [Turborepo](https://turbo.build/repo) with Next.js and Express.js.
 
-## Using this example
+## ✨ Features
 
-Run the following command:
+### 📦 Apps and Packages
+- `apps/web`: Next.js 14+ application with App Router
+  - Tailwind CSS v4
+  - shadcn/ui components
+  - Modern styling and components out of the box
+- `apps/api`: Express.js v5 REST API
+- `packages/typescript-config`: Shared TypeScript configurations
+- `packages/ui`: Shared UI component library (optional)
 
-```sh
-npx create-turbo@latest
+### 🛠 Development Tools
+- **Biome.js**: Fast and reliable linter and formatter
+- **Lefthook**: Git hooks manager for consistent code quality
+- **TypeScript**: End-to-end type safety
+- **Tailwind CSS**: Utility-first CSS framework
+- **shadcn/ui**: Re-usable components built with Radix UI and Tailwind
+
+## 📋 Prerequisites
+
+- Node.js 18+
+- pnpm 8+ (recommended)
+
+## 🚀 Getting Started
+
+### Clone and Install
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/turbo-starter-kit.git
+
+# Install dependencies
+pnpm install
 ```
 
-## What's inside?
+### Development
 
-This Turborepo includes the following packages/apps:
+```bash
+# Start all applications
+pnpm dev
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+# Start specific app
+pnpm dev --filter=web
+pnpm dev --filter=api
+```
 
 ### Build
 
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
+```bash
+# Build all applications
 pnpm build
+
+# Build specific app
+pnpm build --filter=web
+pnpm build --filter=api
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
+## 📁 Project Structure
 
 ```
-cd my-turborepo
-pnpm dev
+.
+├── apps
+│   ├── web                 # Next.js application
+│   │   └── ...
+│   └── api                 # Express.js API
+│       └── ...
+├── packages
+│   ├── typescript-config   # Shared TypeScript configurations
+│   │   └── ...
+│   └── ui                  # Shared UI components (optional)
+│       └── ...
+├── .github                 # GitHub workflows
+├── .vscode                 # VS Code settings
+├── biome.json             # Biome configuration
+├── lefthook.yml           # Lefthook configuration
+├── package.json
+├── pnpm-workspace.yaml
+└── turbo.json
 ```
 
-### Remote Caching
+## 🔧 Configuration
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+### Biome
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+The project uses Biome for linting and formatting. Configuration can be found in `biome.json`:
 
+```json
+{
+  "$schema": "https://biomejs.dev/schemas/1.4.1/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  }
+}
 ```
-cd my-turborepo
-npx turbo login
+
+### Lefthook
+
+Git hooks are managed through Lefthook. See `lefthook.yml`:
+
+```yaml
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: pnpm biome check {staged_files}
+    types:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: pnpm type-check
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 🔄 Available Scripts
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+- `pnpm dev` - Start development servers
+- `pnpm build` - Build all applications
+- `pnpm lint` - Lint all files
+- `pnpm format` - Format all files
+- `pnpm type-check` - Check types across all applications
 
-```
-npx turbo link
-```
+## 📚 Documentation Links
 
-## Useful Links
+- [Turborepo](https://turbo.build/repo/docs)
+- [Next.js](https://nextjs.org/docs)
+- [Express.js](https://expressjs.com/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Biome](https://biomejs.dev/docs)
+- [Lefthook](https://github.com/evilmartians/lefthook)
 
-Learn more about the power of Turborepo:
+## 📝 License
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+MIT © [Your Name]
+
+---
+
+<div align="center">
+
+🌟 Found this useful? Please give it a star! 🌟
+
+</div>
